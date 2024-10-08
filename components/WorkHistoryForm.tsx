@@ -59,10 +59,10 @@ export default function WorkHistoryForm() {
           {parsedEntries.map((entry, index) => (
             <div key={index} className="mb-6 p-4 border rounded">
               <Input
-                value={entry.jobTitle}
+                value={entry.job_title}
                 onChange={(e) => {
                   const updatedEntries = [...parsedEntries];
-                  updatedEntries[index].jobTitle = e.target.value;
+                  updatedEntries[index].job_title = e.target.value;
                   setParsedEntries(updatedEntries);
                 }}
                 className="mb-2"
@@ -79,20 +79,20 @@ export default function WorkHistoryForm() {
                 placeholder="Company"
               />
               <Input
-                value={entry.startDate}
+                value={entry.start_date}
                 onChange={(e) => {
                   const updatedEntries = [...parsedEntries];
-                  updatedEntries[index].startDate = e.target.value;
+                  updatedEntries[index].start_date = e.target.value;
                   setParsedEntries(updatedEntries);
                 }}
                 className="mb-2"
                 placeholder="Start Date"
               />
               <Input
-                value={entry.endDate}
+                value={entry.end_date}
                 onChange={(e) => {
                   const updatedEntries = [...parsedEntries];
-                  updatedEntries[index].endDate = e.target.value;
+                  updatedEntries[index].end_date = e.target.value;
                   setParsedEntries(updatedEntries);
                 }}
                 className="mb-2"

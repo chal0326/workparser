@@ -1,21 +1,24 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from './supabaseClient';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error('Missing Supabase environment variables');
+export interface WorkHistoryEntry {
+  jobTitle: string;
+  company: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  skill: string;
 }
 
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-export async function saveWorkHistory(entries) {
+export async function saveWorkHistory(entries: WorkHistoryEntry[]) {
   try {
     const { data, error } = await supabase
       .from('work_history')
       .insert(entries);
 
-    if (error) throw error;
+    if (error) {
+      throw error;
+    }
+
     return data;
   } catch (error) {
     console.error('Error saving work history:', error);
