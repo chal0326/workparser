@@ -1,18 +1,12 @@
 import { supabase } from './supabaseClient';
+import { Database } from '../types/database.types';
 
-export interface WorkHistoryEntry {
-  jobTitle: string;
-  company: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  skill: string;
-}
+export type WorkHistoryEntry = Database['public']['Tables']['work_experiences']['Insert'];
 
 export async function saveWorkHistory(entries: WorkHistoryEntry[]) {
   try {
     const { data, error } = await supabase
-      .from('work_history')
+      .from('work_experiences')
       .insert(entries);
 
     if (error) {

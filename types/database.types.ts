@@ -386,3 +386,22 @@ export type Enums<
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
     : never
+
+export interface Entry {
+  job_title: string | null;
+  company: string | null;
+  start_date: string | null;
+  end_date: string | null;
+  description: string | null;
+  id?: string;  // Optional, as it's added when saving to the database
+  transferrable_skill?: string;  // Optional, as it's mentioned in the resume parser but not in the form
+}
+
+export interface DatabaseEntry {
+  company: string;
+  position: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  // ... other relevant fields
+}
